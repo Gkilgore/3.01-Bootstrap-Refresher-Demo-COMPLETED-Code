@@ -2,7 +2,14 @@
 <html lang="en">
 
 <head>
-
+    <!-- TEACHER NOTE:
+         Utilities-only Bootstrap refresher. No components, no custom JS.
+         Sections: Grid • Display • Spacing/Box Model • Typography (fit)
+                   Flexbox • Flex+Grid • Move Content (float/fixed/sticky/absolute)
+                   Sidebar Pattern (sticky) • Images (helpers, gallery, captions, hero)
+                   Embeds (.ratio)
+         Keep DevTools open; resize often.
+    -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap Utilities Playground — Teacher</title>
@@ -10,368 +17,388 @@
     <!-- Bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Minimal custom CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-light">
+<body class=""> <!-- was bg-light | add site bg -->
     <!-- INTRO -->
-    <header class="container py-5 text-center">
-        <h1 class="display-5 fw-bold mb-2 text-primary">Bootstrap Utilities Playground</h1>
-        <p class="lead mb-3">
+    <header class=""> <!-- was container py-5 text-center | add container, padding, center text -->
+        <h1 class="">Bootstrap Utilities Playground</h1>
+        <!-- was display-5 fw-bold mb-2 text-primary | add type scale, weight, margins, color -->
+        <p class=""> <!-- was lead mb-3 | add lead + margin -->
             Grid • Display • Spacing & Box Model • Typography (fit) • Flexbox • Flex + Grid •
             Move Content • Sidebar Pattern • Images • Embeds
         </p>
-        <p class="text-muted mb-0">Resize the window to watch breakpoints kick in.</p>
+        <p class="">Resize the window to watch breakpoints kick in.</p>
+        <!-- was text-muted mb-0 | add muted + margin reset -->
     </header>
 
     <!-- ============== GRID ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Grid System — Visual Demos</h2>
+    <section class=""> <!-- was container py-5 | add container + vertical padding -->
+        <h2 class="">Grid System — Visual Demos</h2>
+        <!-- was fw-semibold mb-4 text-center text-secondary | add weight, spacing, alignment, color -->
 
         <!-- Demo 1 -->
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Breakpoints</h3>
-        <p class="text-center small text-muted mb-3">
+        <h3 class="">Demo 1: Breakpoints</h3>
+        <!-- was fs-5 fw-bold text-primary text-center mb-2 | add size, weight, color, alignment -->
+        <p class=""> <!-- was text-center small text-muted mb-3 | add alignment, size, muted, margin -->
             <code>col-12</code> (phones) → <code>col-md-6</code> (tablets) → <code>col-lg-4</code> (laptops).
         </p>
-        <div class="row text-center g-3">
-            <div class="col-12 col-md-6 col-lg-4 bg-primary text-white p-4 rounded">A: col-12 col-md-6 col-lg-4</div>
-            <div class="col-12 col-md-6 col-lg-4 bg-warning text-dark p-4 rounded">B: col-12 col-md-6 col-lg-4</div>
-            <div class="col-12 col-md-6 col-lg-4 bg-success text-white p-4 rounded">C: col-12 col-md-6 col-lg-4</div>
+        <div class=""> <!-- was row text-center g-3 | add .row, center text, gutters -->
+            <div class="">A: col-12 col-md-6 col-lg-4</div>
+            <!-- was col-12 col-md-6 col-lg-4 bg-primary text-white p-4 rounded -->
+            <div class="">B: col-12 col-md-6 col-lg-4</div>
+            <!-- was col-12 col-md-6 col-lg-4 bg-warning text-dark p-4 rounded -->
+            <div class="">C: col-12 col-md-6 col-lg-4</div>
+            <!-- was col-12 col-md-6 col-lg-4 bg-success text-white p-4 rounded -->
         </div>
 
         <!-- Demo 2 -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Auto Layout with <code>row-cols-*</code>
-        </h3>
-        <p class="text-center small text-muted mb-3">
+        <h3 class="">Demo 2: Auto Layout with <code>row-cols-*</code></h3>
+        <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class=""> <!-- was text-center small text-muted mb-3 -->
             1 / 2 / 4 columns via <code>row-cols-1 row-cols-sm-2 row-cols-lg-4</code> — no child <code>col-*</code>.
         </p>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 text-center">
-            <div class="col text-bg-info p-4 rounded">1</div>
-            <div class="col text-bg-danger p-4 rounded">2</div>
-            <div class="col text-bg-secondary p-4 rounded">3</div>
-            <div class="col text-bg-dark p-4 rounded">4</div>
+        <div class=""> <!-- was row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 text-center -->
+            <div class="">1</div> <!-- was col text-bg-info p-4 rounded -->
+            <div class="">2</div> <!-- was col text-bg-danger p-4 rounded -->
+            <div class="">3</div> <!-- was col text-bg-secondary p-4 rounded -->
+            <div class="">4</div> <!-- was col text-bg-dark p-4 rounded -->
         </div>
 
         <!-- Demo 3 -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 3: Equal vs Content Width</h3>
-        <p class="text-center small text-muted mb-3"><code>.col</code> flexes to fill; <code>.col-auto</code> fits
-            content.</p>
-        <div class="row align-items-center g-3">
-            <div class="col text-bg-primary p-4 rounded text-center">.col (flex)</div>
-            <div class="col text-bg-success p-4 rounded text-center">.col (flex)</div>
-            <div class="col-auto bg-warning text-dark p-4 rounded text-center border border-3 border-dark">.col-auto
-            </div>
+        <h3 class="">Demo 3: Equal vs Content Width</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class=""> <!-- was text-center small text-muted mb-3 -->
+            <code>.col</code> flexes to fill; <code>.col-auto</code> fits content.
+        </p>
+        <div class=""> <!-- was row align-items-center g-3 -->
+            <div class="">.col (flex)</div> <!-- was col text-bg-primary p-4 rounded text-center -->
+            <div class="">.col (flex)</div> <!-- was col text-bg-success p-4 rounded text-center -->
+            <div class="">.col-auto</div>
+            <!-- was col-auto bg-warning text-dark p-4 rounded text-center border border-3 border-dark -->
         </div>
 
         <!-- Demo 4 -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 4: Ordering & Offsets</h3>
-        <p class="text-center small text-muted mb-3">Reorder with <code>order-*</code>; center with
-            <code>offset-*</code>.
+        <h3 class="">Demo 4: Ordering & Offsets</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class=""> <!-- was text-center small text-muted mb-3 -->
+            Reorder with <code>order-*</code>; center with <code>offset-*</code>.
         </p>
-        <div class="row g-3 text-center">
-            <div class="col-12 col-md-4 order-md-2 text-bg-danger p-4 rounded">B: order-md-2</div>
-            <div class="col-12 col-md-4 order-md-1 text-bg-secondary p-4 rounded">A: order-md-1</div>
-            <div class="col-12 col-md-4 order-md-3 text-bg-dark p-4 rounded">C: order-md-3</div>
+        <div class=""> <!-- was row g-3 text-center -->
+            <div class="">B: order-md-2</div> <!-- was col-12 col-md-4 order-md-2 text-bg-danger p-4 rounded -->
+            <div class="">A: order-md-1</div> <!-- was col-12 col-md-4 order-md-1 text-bg-secondary p-4 rounded -->
+            <div class="">C: order-md-3</div> <!-- was col-12 col-md-4 order-md-3 text-bg-dark p-4 rounded -->
         </div>
-        <div class="row g-3 text-center mt-3">
-            <div class="col-12 col-md-6 offset-md-3 text-bg-info p-4 rounded border border-3 border-white">
+        <div class=""> <!-- was row g-3 text-center mt-3 -->
+            <div class="">
                 Centered with <code>offset-md-3</code>
-            </div>
+            </div> <!-- was col-12 col-md-6 offset-md-3 text-bg-info p-4 rounded border border-3 border-white -->
         </div>
 
         <!-- Demo 5 -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 5: Nesting & Gutters</h3>
-        <p class="text-center small text-muted mb-3">Parent <code>g-0</code>; nested row uses <code>gy-2 gx-5</code>.
+        <h3 class="">Demo 5: Nesting & Gutters</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class=""> <!-- was text-center small text-muted mb-3 -->
+            Parent <code>g-0</code>; nested row uses <code>gy-2 gx-5</code>.
         </p>
-        <div class="row g-0 border border-3 border-primary rounded overflow-hidden">
-            <div class="col-12 col-lg-6 bg-primary-subtle p-3">
-                <div class="bg-primary text-white rounded p-4 h-100 d-flex align-items-center justify-content-center">
-                    Parent col (g-0 removes gutters)
-                </div>
+        <div class=""> <!-- was row g-0 border border-3 border-primary rounded overflow-hidden -->
+            <div class=""> <!-- was col-12 col-lg-6 bg-primary-subtle p-3 -->
+                <div class="">Parent col (g-0 removes gutters)</div>
+                <!-- was bg-primary text-white rounded p-4 h-100 d-flex align-items-center justify-content-center -->
             </div>
-            <div class="col-12 col-lg-6 bg-warning-subtle p-3">
-                <div class="row gy-2 gx-5">
-                    <div class="col-6">
-                        <div class="text-bg-warning rounded p-3 text-center">Nested 1</div>
+            <div class=""> <!-- was col-12 col-lg-6 bg-warning-subtle p-3 -->
+                <div class=""> <!-- was row gy-2 gx-5 -->
+                    <div class=""> <!-- was col-6 -->
+                        <div class="">Nested 1</div> <!-- was text-bg-warning rounded p-3 text-center -->
                     </div>
-                    <div class="col-6">
-                        <div class="text-bg-success rounded p-3 text-center">Nested 2</div>
+                    <div class=""> <!-- was col-6 -->
+                        <div class="">Nested 2</div> <!-- was text-bg-success rounded p-3 text-center -->
                     </div>
-                    <div class="col-12">
-                        <div class="text-bg-secondary rounded p-3 text-center">Nested full width</div>
+                    <div class=""> <!-- was col-12 -->
+                        <div class="">Nested full width</div> <!-- was text-bg-secondary rounded p-3 text-center -->
                     </div>
                 </div>
-                <p class="small text-muted mt-2 mb-0">Nested <code>.row</code> controls its own gutters.</p>
+                <p class="">Nested <code>.row</code> controls its own gutters.</p>
+                <!-- was small text-muted mt-2 mb-0 -->
             </div>
         </div>
     </section>
 
     <!-- ============== DISPLAY ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Display Utilities — Visual Demos</h2>
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Display Utilities — Visual Demos</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
 
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Responsive Visibility</h3>
-        <p class="text-center small text-muted mb-3">Resize to see which block appears.</p>
-        <div class="bg-white border border-3 border-primary p-4 rounded text-center">
-            <div class="d-none d-md-block text-bg-primary py-4 mb-2 rounded">Visible on md+
-                (<code>d-none d-md-block</code>)</div>
-            <div class="d-block d-md-none text-bg-danger py-4 rounded">Visible only on small
-                (<code>d-block d-md-none</code>)</div>
+        <h3 class="">Demo 1: Responsive Visibility</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <p class="">Resize to see which block appears.</p> <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was bg-white border border-3 border-primary p-4 rounded text-center -->
+            <div class="">Visible on md+
+                (<code>d-none d-md-block</code>)</div> <!-- was d-none d-md-block text-bg-primary py-4 mb-2 rounded -->
+            <div class="">Visible only on small
+                (<code>d-block d-md-none</code>)</div> <!-- was d-block d-md-none text-bg-danger py-4 rounded -->
         </div>
 
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Block / Inline / Inline-block</h3>
-        <p class="text-center small text-muted mb-3">Switch display at <code>lg</code>.</p>
-        <div class="bg-body-tertiary p-3 rounded">
-            <div class="d-block d-lg-inline-block bg-white border p-2 me-lg-2 mb-2 mb-lg-0 rounded">Block → inline-block
-                at lg+</div>
-            <div class="d-inline bg-white border p-2 rounded">Always inline</div>
+        <h3 class="">Demo 2: Block / Inline / Inline-block</h3>
+        <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">Switch display at <code>lg</code>.</p> <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was bg-body-tertiary p-3 rounded -->
+            <div class="">Block → inline-block
+                at lg+</div> <!-- was d-block d-lg-inline-block bg-white border p-2 me-lg-2 mb-2 mb-lg-0 rounded -->
+            <div class="">Always inline</div> <!-- was d-inline bg-white border p-2 rounded -->
         </div>
     </section>
 
     <!-- ============== SPACING & BOX MODEL ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Spacing & Box Model — Visual Demos</h2>
-        <p class="text-center small text-muted mb-3"><strong>Padding</strong> = inside; <strong>Margin</strong> =
-            outside.</p>
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Spacing & Box Model — Visual Demos</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
+        <p class=""><strong>Padding</strong> = inside; <strong>Margin</strong> =
+            outside.</p> <!-- was text-center small text-muted mb-3 -->
 
         <!-- Compare -->
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Compare Padding vs Margin</h3>
-        <div class="p-3 bg-body-tertiary border rounded">
-            <div class="row g-0">
-                <div class="col-12 col-md-4">
-                    <div class="bg-primary text-white p-2 m-0 border border-3 border-dark rounded"><strong>Box
+        <h3 class="">Demo 1: Compare Padding vs Margin</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <div class=""> <!-- was p-3 bg-body-tertiary border rounded -->
+            <div class=""> <!-- was row g-0 -->
+                <div class=""> <!-- was col-12 col-md-4 -->
+                    <div class=""><strong>Box
                             A</strong><br /><code>.p-2 .m-0</code></div>
-                    <p class="small text-muted mt-2">Tight inside space; no outside push.</p>
+                    <!-- was bg-primary text-white p-2 m-0 border border-3 border-dark rounded -->
+                    <p class="">Tight inside space; no outside push.</p> <!-- was small text-muted mt-2 -->
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="bg-primary text-white px-5 py-3 m-2 border border-3 border-dark rounded"><strong>Box
+                <div class=""> <!-- was col-12 col-md-4 -->
+                    <div class=""><strong>Box
                             B</strong><br /><code>.px-5 .py-3 .m-2</code></div>
-                    <p class="small text-muted mt-2">Bigger padding + medium margin.</p>
+                    <!-- was bg-primary text-white px-5 py-3 m-2 border border-3 border-dark rounded -->
+                    <p class="">Bigger padding + medium margin.</p> <!-- was small text-muted mt-2 -->
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="bg-primary text-white ps-5 pe-1 pt-1 pb-4 m-4 border border-3 border-dark rounded">
+                <div class=""> <!-- was col-12 col-md-4 -->
+                    <div class="">
                         <strong>Box C</strong><br /><code>.ps-5 .pe-1 .pt-1 .pb-4 .m-4</code>
                     </div>
-                    <p class="small text-muted mt-2">Side-specific padding + large margin.</p>
+                    <!-- was bg-primary text-white ps-5 pe-1 pt-1 pb-4 m-4 border border-3 border-dark rounded -->
+                    <p class="">Side-specific padding + large margin.</p> <!-- was small text-muted mt-2 -->
                 </div>
             </div>
         </div>
 
         <!-- Chameleon -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Responsive “Chameleon” Box</h3>
-        <p class="text-center small text-muted mb-3">XS/SM: <code>p-2 m-1</code> → MD+: <code>p-md-4 m-md-3</code> →
-            LG+: <code>p-lg-5 m-lg-5</code></p>
-        <div class="bg-white border rounded p-3">
-            <div class="bg-success text-white p-2 p-md-4 p-lg-5 m-1 m-md-3 m-lg-5 border border-3 border-dark rounded">
-                <strong>Chameleon Box</strong><br /><span class="small">Resize and inspect in DevTools.</span>
+        <h3 class="">Demo 2: Responsive “Chameleon” Box</h3>
+        <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">XS/SM: <code>p-2 m-1</code> → MD+: <code>p-md-4 m-md-3</code> →
+            LG+: <code>p-lg-5 m-lg-5</code></p> <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was bg-white border rounded p-3 -->
+            <div class="">
+                <strong>Chameleon Box</strong><br /><span class="">Resize and inspect in DevTools.</span>
             </div>
-            <p class="small text-muted mt-2 mb-0">Tip: Center fixed-width with <code>.mx-auto</code> +
+            <!-- was bg-success text-white p-2 p-md-4 p-lg-5 m-1 m-md-3 m-lg-5 border border-3 border-dark rounded -->
+            <p class="">Tip: Center fixed-width with <code>.mx-auto</code> +
                 <code>.w-75</code>.
-            </p>
+            </p> <!-- was small text-muted mt-2 mb-0 -->
         </div>
 
         <!-- Gap compare -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 3: Gap (Side-by-Side)</h3>
-        <p class="text-center small text-muted mb-3">Compare <code>gap-0</code>, <code>gap-2</code>, <code>gap-5</code>.
-        </p>
-        <div class="row g-4">
-            <div class="col-12 col-md-4">
-                <div class="bg-white border rounded p-3">
-                    <div class="d-flex flex-wrap gap-0">
-                        <div class="p-2 text-bg-info rounded">A</div>
-                        <div class="p-2 text-bg-primary rounded">B</div>
-                        <div class="p-2 text-bg-success rounded">C</div>
+        <h3 class="">Demo 3: Gap (Side-by-Side)</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">Compare <code>gap-0</code>, <code>gap-2</code>, <code>gap-5</code>.
+        </p> <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was row g-4 -->
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class=""> <!-- was bg-white border rounded p-3 -->
+                    <div class=""> <!-- was d-flex flex-wrap gap-0 -->
+                        <div class="">A</div> <!-- was p-2 text-bg-info rounded -->
+                        <div class="">B</div> <!-- was p-2 text-bg-primary rounded -->
+                        <div class="">C</div> <!-- was p-2 text-bg-success rounded -->
                     </div>
-                    <p class="small text-muted mt-2 mb-0 text-center"><code>gap-0</code></p>
+                    <p class=""> <code>gap-0</code></p> <!-- was small text-muted mt-2 mb-0 text-center -->
                 </div>
             </div>
-            <div class="col-12 col-md-4">
-                <div class="bg-white border rounded p-3">
-                    <div class="d-flex flex-wrap gap-2">
-                        <div class="p-2 text-bg-info rounded">A</div>
-                        <div class="p-2 text-bg-primary rounded">B</div>
-                        <div class="p-2 text-bg-success rounded">C</div>
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class="">
+                    <div class=""> <!-- was d-flex flex-wrap gap-2 -->
+                        <div class="">A</div>
+                        <div class="">B</div>
+                        <div class="">C</div>
                     </div>
-                    <p class="small text-muted mt-2 mb-0 text-center"><code>gap-2</code></p>
+                    <p class=""><code>gap-2</code></p>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
-                <div class="bg-white border rounded p-3">
-                    <div class="d-flex flex-wrap gap-5">
-                        <div class="p-2 text-bg-info rounded">A</div>
-                        <div class="p-2 text-bg-primary rounded">B</div>
-                        <div class="p-2 text-bg-success rounded">C</div>
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class="">
+                    <div class=""> <!-- was d-flex flex-wrap gap-5 -->
+                        <div class="">A</div>
+                        <div class="">B</div>
+                        <div class="">C</div>
                     </div>
-                    <p class="small text-muted mt-2 mb-0 text-center"><code>gap-5</code></p>
+                    <p class=""><code>gap-5</code></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============== TYPOGRAPHY ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Typography — Visual Demos</h2>
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Typography — Visual Demos</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
 
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Size • Weight • Line-height</h3>
-        <div class="text-center bg-white p-4 rounded border border-3 border-warning">
-            <p class="fs-1 fw-bold lh-1 text-primary mb-1">fs-1 • fw-bold • lh-1</p>
-            <p class="fs-3 lh-sm text-secondary mb-1">fs-3 • lh-sm</p>
-            <p class="fs-5 text-uppercase fw-semibold text-success mb-0">text-uppercase • fw-semibold</p>
+        <h3 class="">Demo 1: Size • Weight • Line-height</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <div class=""> <!-- was text-center bg-white p-4 rounded border border-3 border-warning -->
+            <p class="">fs-1 • fw-bold • lh-1</p> <!-- was fs-1 fw-bold lh-1 text-primary mb-1 -->
+            <p class="">fs-3 • lh-sm</p> <!-- was fs-3 lh-sm text-secondary mb-1 -->
+            <p class="">text-uppercase • fw-semibold</p> <!-- was fs-5 text-uppercase fw-semibold text-success mb-0 -->
         </div>
 
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Alignment (Responsive)</h3>
-        <p class="text-center small text-muted mb-3">Center on mobile → start on md+
-            (<code>.text-center .text-md-start</code>)</p>
-        <p class="text-center text-md-start bg-body-tertiary border rounded p-3">Realigns at <strong>md</strong>.</p>
+        <h3 class="">Demo 2: Alignment (Responsive)</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">Center on mobile → start on md+
+            (<code>.text-center .text-md-start</code>)</p> <!-- was text-center small text-muted mb-3 -->
+        <p class="">Realigns at <strong>md</strong>.</p>
+        <!-- was text-center text-md-start bg-body-tertiary border rounded p-3 -->
 
         <!-- Real-world fit patterns -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 3: Real-World Text Fitting</h3>
+        <h3 class="">Demo 3: Real-World Text Fitting</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
 
-        <h4 class="fs-6 fw-semibold mt-3 mb-2">A) More Room via Grid</h4>
-        <div class="row g-3">
-            <div class="col-12 col-md-8">
-                <p class="bg-white border rounded p-3 mb-0">On mobile full-width; at md+ we give it 8/12 width for
-                    better line length.</p>
+        <h4 class="">A) More Room via Grid</h4> <!-- was fs-6 fw-semibold mt-3 mb-2 -->
+        <div class=""> <!-- was row g-3 -->
+            <div class=""> <!-- was col-12 col-md-8 -->
+                <p class="">On mobile full-width; at md+ we give it 8/12 width for
+                    better line length.</p> <!-- was bg-white border rounded p-3 mb-0 -->
             </div>
         </div>
 
-        <h4 class="fs-6 fw-semibold mt-4 mb-2">B) Fluid Type (CSS <code>clamp()</code>)</h4>
-        <p class="bg-body-tertiary border rounded p-3 mb-0 fluid-text">Scales smoothly with viewport; no breakpoint
-            classes.</p>
+        <h4 class="">B) Fluid Type (CSS <code>clamp()</code>)</h4> <!-- was fs-6 fw-semibold mt-4 mb-2 -->
+        <p class="">Scales smoothly with viewport; no breakpoint
+            classes.</p> <!-- was bg-body-tertiary border rounded p-3 mb-0 fluid-text -->
 
-        <h4 class="fs-6 fw-semibold mt-4 mb-2">C) Content Swap (Responsive Display)</h4>
-        <p class="d-none d-md-block bg-white border rounded p-3 mb-1">LONG VERSION: more detail at md+.</p>
-        <p class="d-block d-md-none bg-white border rounded p-3 mb-0">SHORT VERSION: tighter copy on small.</p>
+        <h4 class="">C) Content Swap (Responsive Display)</h4> <!-- was fs-6 fw-semibold mt-4 mb-2 -->
+        <p class="">LONG VERSION: more detail at md+.</p>
+        <!-- was d-none d-md-block bg-white border rounded p-3 mb-1 -->
+        <p class="">SHORT VERSION: tighter copy on small.</p>
+        <!-- was d-block d-md-none bg-white border rounded p-3 mb-0 -->
 
-        <h4 class="fs-6 fw-semibold mt-4 mb-2">D) Truncate on Small, Full on md+</h4>
-        <div class="bg-white border rounded p-2" style="max-width: 320px;">
-            <span class="d-inline d-md-none text-truncate d-block" style="max-width: 100%;">This headline ellipsizes on
-                small screens.</span>
-            <span class="d-none d-md-inline">Full text on md+ — plenty of room.</span>
+        <h4 class="">D) Truncate on Small, Full on md+</h4> <!-- was fs-6 fw-semibold mt-4 mb-2 -->
+        <div class="" style="max-width: 320px;">
+            <span class="" style="max-width: 100%;">This headline ellipsizes on
+                small screens.</span> <!-- was d-inline d-md-none text-truncate d-block -->
+            <span class="">Full text on md+ — plenty of room.</span> <!-- was d-none d-md-inline -->
         </div>
 
-        <h4 class="fs-6 fw-semibold mt-4 mb-2">E) Narrow vs Wide (Break vs Truncate)</h4>
-        <div class="row g-3">
-            <div class="col-12 col-md-6">
-                <div class="border rounded p-2 text-break"><strong>Narrow:</strong>
+        <h4 class="">E) Narrow vs Wide (Break vs Truncate)</h4> <!-- was fs-6 fw-semibold mt-4 mb-2 -->
+        <div class=""> <!-- was row g-3 -->
+            <div class=""> <!-- was col-12 col-md-6 -->
+                <div class=""><strong>Narrow:</strong>
                     supercalifragilisticexpialidocious_superlong_word_demo</div>
-                <div class="text-truncate border rounded px-2 py-1 mt-2" style="max-width: 260px;">
+                <!-- was border rounded p-2 text-break -->
+                <div class="" style="max-width: 260px;">
                     <strong>Truncated:</strong> ellipsis on small.
-                </div>
+                </div> <!-- was text-truncate border rounded px-2 py-1 mt-2 -->
             </div>
-            <div class="col-12 col-md-6">
-                <div class="border rounded p-2"><strong>Wider:</strong> Fits comfortably without breaking/truncating.
-                </div>
+            <div class=""> <!-- was col-12 col-md-6 -->
+                <div class=""><strong>Wider:</strong> Fits comfortably without breaking/truncating.
+                </div> <!-- was border rounded p-2 -->
             </div>
         </div>
     </section>
 
-    <!-- ============== FLEXBOX ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Flexbox — Visual Demos</h2>
+    <!-- ============== FLEXBOX =======sgsfgsdfgsdgsdfgsdfgsdfg========== -->
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Flexbox — Visual Demos</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
 
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Direction</h3>
-        <p class="text-center small text-muted mb-3">Column on xs → Row on md+</p>
-        <div class="d-flex flex-column flex-md-row gap-3 bg-white border border-3 border-info p-3 rounded">
-            <div class="p-3 text-bg-info rounded flex-fill">Item 1</div>
-            <div class="p-3 text-bg-primary rounded flex-fill">Item 2</div>
-            <div class="p-3 text-bg-success rounded flex-fill">Item 3</div>
+        <h3 class="">Demo 1: Direction</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <p class="">Column on xs → Row on md+</p> <!-- was text-center small text-muted mb-3 -->
+        <div class="">
+            <!-- was d-flex flex-column flex-md-row gap-3 bg-white border border-3 border-info p-3 rounded -->
+            <div class="">Item 1</div> <!-- was p-3 text-bg-info rounded flex-fill -->
+            <div class="">Item 2</div> <!-- was p-3 text-bg-primary rounded flex-fill -->
+            <div class="">Item 3</div> <!-- was p-3 text-bg-success rounded flex-fill -->
         </div>
 
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Justify & Align</h3>
-        <p class="text-center small text-muted mb-3">Center both axes.</p>
-        <div class="d-flex justify-content-center align-items-center gap-3 bg-body-tertiary border p-3 rounded"
-            style="height: 140px;">
-            <div class="p-3 bg-white border rounded">A</div>
-            <div class="p-3 bg-white border rounded">B</div>
-            <div class="p-3 bg-white border rounded">C</div>
+        <h3 class="">Demo 2: Justify & Align</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">Center both axes.</p> <!-- was text-center small text-muted mb-3 -->
+        <div class="" style="height: 140px;">
+            <!-- was d-flex justify-content-center align-items-center gap-3 bg-body-tertiary border p-3 rounded -->
+            <div class="">A</div> <!-- was p-3 bg-white border rounded -->
+            <div class="">B</div>
+            <div class="">C</div>
         </div>
 
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 3: Order + Fill</h3>
-        <p class="text-center small text-muted mb-3">Reorder w/o touching HTML; share space with <code>flex-fill</code>.
-        </p>
-        <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-stretch gap-3 bg-white border border-3 border-info p-3 rounded">
-            <div class="p-4 text-bg-info rounded flex-fill order-md-2">Item B (order-md-2)</div>
-            <div class="p-4 text-bg-primary rounded flex-fill order-md-1">Item A (order-md-1)</div>
-            <div class="p-4 text-bg-success rounded flex-fill">Item C (flex-fill)</div>
+        <h3 class="">Demo 3: Order + Fill</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">Reorder w/o touching HTML; share space with <code>flex-fill</code>.
+        </p> <!-- was text-center small text-muted mb-3 -->
+        <div class="">
+            <!-- was d-flex flex-column flex-md-row justify-content-between align-items-stretch gap-3 bg-white border border-3 border-info p-3 rounded -->
+            <div class="">Item B (order-md-2)</div> <!-- was p-4 text-bg-info rounded flex-fill order-md-2 -->
+            <div class="">Item A (order-md-1)</div> <!-- was p-4 text-bg-primary rounded flex-fill order-md-1 -->
+            <div class="">Item C (flex-fill)</div> <!-- was p-4 text-bg-success rounded flex-fill -->
         </div>
     </section>
 
     <!-- ============== FLEX + GRID TOGETHER ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Flex + Grid Together</h2>
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Flex + Grid Together</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
 
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Flex-in-Grid</h3>
-        <p class="text-center small text-muted mb-3">Grid sets columns; Flex aligns within each column.</p>
-        <div class="row g-3">
-            <div class="col-12 col-md-4">
-                <div class="d-flex align-items-center justify-content-center text-bg-info rounded p-4"
-                    style="min-height:120px;">
-                    <span class="fw-semibold">Centered with Flex</span>
-                </div>
+        <h3 class="">Demo 1: Flex-in-Grid</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <p class="">Grid sets columns; Flex aligns within each column.</p>
+        <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was row g-3 -->
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class="" style="min-height:120px;">
+                    <span class="">Centered with Flex</span> <!-- was fw-semibold -->
+                </div> <!-- was d-flex align-items-center justify-content-center text-bg-info rounded p-4 -->
             </div>
-            <div class="col-12 col-md-4">
-                <div class="d-flex flex-column justify-content-between text-bg-primary rounded p-3"
-                    style="min-height:120px;">
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class="" style="min-height:120px;">
                     <span>Top</span><span>Bottom</span>
-                </div>
+                </div> <!-- was d-flex flex-column justify-content-between text-bg-primary rounded p-3 -->
             </div>
-            <div class="col-12 col-md-4">
-                <div class="d-flex justify-content-evenly align-items-center gap-2 text-bg-success rounded p-3"
-                    style="min-height:120px;">
-                    <span class="badge text-bg-light">A</span><span class="badge text-bg-light">B</span><span
-                        class="badge text-bg-light">C</span>
-                </div>
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class="" style="min-height:120px;">
+                    <span class="">A</span><span class="">B</span><span class="">C</span>
+                </div> <!-- was d-flex justify-content-evenly align-items-center gap-2 text-bg-success rounded p-3 -->
             </div>
         </div>
 
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Grid-as-Flex</h3>
-        <p class="text-center small text-muted mb-3"><code>.row</code> is flex; use flex utilities on it.</p>
-        <div class="row justify-content-center align-items-stretch g-3">
-            <div class="col-10 col-sm-6 col-md-4">
-                <div class="text-bg-warning rounded p-4 h-100">Centered block (justify-content-center on row)</div>
+        <h3 class="">Demo 2: Grid-as-Flex</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class=""><code>.row</code> is flex; use flex utilities on it.</p>
+        <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was row justify-content-center align-items-stretch g-3 -->
+            <div class=""> <!-- was col-10 col-sm-6 col-md-4 -->
+                <div class="">Centered block (justify-content-center on row)</div>
+                <!-- was text-bg-warning rounded p-4 h-100 -->
             </div>
-            <div class="col-10 col-sm-6 col-md-4">
-                <div class="text-bg-dark rounded p-4 h-100">Same height via <code>.h-100</code></div>
+            <div class=""> <!-- was col-10 col-sm-6 col-md-4 -->
+                <div class="">Same height via <code>.h-100</code></div> <!-- was text-bg-dark rounded p-4 h-100 -->
             </div>
         </div>
     </section>
 
     <!-- ============== MOVE CONTENT: FLOAT / FIXED / STICKY / ABSOLUTE ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-1 text-center text-secondary">Move Content — Float, Fixed, Sticky, Absolute</h2>
-        <p class="text-center small text-muted mb-4">Float wraps text; <code>.fixed-top</code> pins to viewport;
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Move Content — Float, Fixed, Sticky, Absolute</h2>
+        <!-- was fw-semibold mb-1 text-center text-secondary -->
+        <p class="">Float wraps text; <code>.fixed-top</code> pins to viewport;
             <code>.sticky-top</code> sticks in-flow; absolute places overlays.
-        </p>
+        </p> <!-- was text-center small text-muted mb-4 -->
 
         <!-- Fixed Top -->
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Fixed Top Utility Bar</h3>
-        <div class="position-relative border rounded p-3 bg-white">
+        <h3 class="">Demo 1: Fixed Top Utility Bar</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <div class=""> <!-- was position-relative border rounded p-3 bg-white -->
             <!-- Normally this would live at the top of <body>. Rendered here for demo. -->
-            <div class="fixed-top text-bg-dark py-2">
-                <div class="container d-flex justify-content-between"><span class="small">.fixed-top</span><span
-                        class="small">Utility Bar</span></div>
+            <div class=""> <!-- was fixed-top text-bg-dark py-2 -->
+                <div class=""><span class="">.fixed-top</span><span class="">Utility Bar</span></div>
+                <!-- was container d-flex justify-content-between + small spans -->
             </div>
-            <div class="demo-fixed-spacer"></div>
-            <p class="mb-0 small text-muted">Add top space (e.g., <code>body { padding-top: 3.25rem; }</code>) so
-                content isn’t hidden.</p>
+            <div class=""> </div> <!-- was demo-fixed-spacer -->
+            <p class="">Add top space (e.g., <code>body { padding-top: 3.25rem; }</code>) so
+                content isn’t hidden.</p> <!-- was mb-0 small text-muted -->
         </div>
 
         <!-- Demo 2: Sticky Top (Scrollbox — proven minimal) -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Sticky Top (Scrollbox)</h3>
-        <div class="bg-white border rounded p-3">
+        <h3 class="">Demo 2: Sticky Top (Scrollbox)</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <div class=""> <!-- was bg-white border rounded p-3 -->
             <!-- SCROLLABLE BOX (fixed height + its own scrollbar) -->
             <div
                 style="height: 280px; overflow-y: auto; overflow-x: hidden; border: 2px solid #0d6efd; border-radius: .5rem;">
                 <!-- Sticky header INSIDE the scrollable ancestor -->
-                <div style="position: sticky; top: 0; z-index: 1;" class="bg-primary text-white p-2">
+                <div style="position: sticky; top: 0; z-index: 1;" class="">
                     I stick to the top of THIS box (inline <code>position:sticky; top:0</code>)
-                </div>
+                </div> <!-- was bg-primary text-white p-2 -->
 
                 <!-- Tall content to force scrolling -->
-                <div class="p-3">
-                    <p class="small text-muted">Scroll inside this blue-bordered box.</p>
+                <div class=""> <!-- was p-3 -->
+                    <p class="">Scroll inside this blue-bordered box.</p> <!-- was small text-muted -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget turpis justo.</p>
                     <p>Curabitur ac facilisis risus. Sed nec tempor ipsum. Duis laoreet orci a magna pharetra.</p>
                     <p>Praesent semper mi at sapien cursus, nec finibus magna aliquet. Vestibulum eu sem.</p>
@@ -386,61 +413,62 @@
 
 
         <!-- Float -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 3: Responsive Float</h3>
-        <div class="bg-white border p-3 rounded clearfix">
-            <img src="https://picsum.photos/seed/float/480/320" class="img-fluid rounded shadow ms-3 mb-2 float-md-end"
-                alt="Float example" style="max-width: 320px;" />
-            <p class="mb-2">On small screens no float. On <strong>md+</strong>, <code>.float-md-end</code> pushes it
-                right and text wraps around. Add <code>.clearfix</code> to the parent.</p>
-            <p class="mb-0">Try <code>float-md-start</code> for the opposite side.</p>
+        <h3 class="">Demo 3: Responsive Float</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <div class=""> <!-- was bg-white border p-3 rounded clearfix -->
+            <img src="https://picsum.photos/seed/float/480/320" class="" alt="Float example"
+                style="max-width: 320px;" /> <!-- was img-fluid rounded shadow ms-3 mb-2 float-md-end -->
+            <p class="">On small screens no float. On <strong>md+</strong>, <code>.float-md-end</code> pushes it
+                right and text wraps around. Add <code>.clearfix</code> to the parent.</p> <!-- was mb-2 -->
+            <p class="">Try <code>float-md-start</code> for the opposite side.</p> <!-- was mb-0 -->
         </div>
 
         <!-- Absolute badge -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 4: Absolute Corner Badge</h3>
-        <div class="position-relative bg-warning-subtle border border-warning border-3 rounded p-4">
-            <strong class="d-block mb-2">Position Utilities</strong>
-            <p class="mb-0">Parent is <code>.position-relative</code>; badge uses
+        <h3 class="">Demo 4: Absolute Corner Badge</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <div class=""> <!-- was position-relative bg-warning-subtle border border-warning border-3 rounded p-4 -->
+            <strong class="">Position Utilities</strong> <!-- was d-block mb-2 -->
+            <p class="">Parent is <code>.position-relative</code>; badge uses
                 <code>.position-absolute .top-0 .end-0 .translate-middle</code>.
-            </p>
-            <span class="position-absolute top-0 end-0 translate-middle badge rounded-pill text-bg-info">New</span>
+            </p> <!-- was mb-0 -->
+            <span class="">New</span>
+            <!-- was position-absolute top-0 end-0 translate-middle badge rounded-pill text-bg-info -->
         </div>
     </section>
 
     <!-- ============== LAYOUT PATTERN: SIDEBAR (scrollbox so sticky is obvious) ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Layout Pattern — Sidebar + Content</h2>
-        <p class="text-center small text-muted mb-3">
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Layout Pattern — Sidebar + Content</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
+        <p class="">
             The grey box scrolls. The sidebar sticks at the top of that box (<code>position-sticky top-0</code>). Stacks
             on mobile.
-        </p>
+        </p> <!-- was text-center small text-muted mb-3 -->
 
-        <div class="bg-white border rounded p-3">
+        <div class=""> <!-- was bg-white border rounded p-3 -->
             <!-- SCROLLABLE ANCESTOR for BOTH columns -->
             <div
                 style="height: 320px; overflow-y: auto; overflow-x: hidden; border: 2px solid #6c757d; border-radius: .5rem; padding: .5rem;">
-                <div class="row g-3">
+                <div class=""> <!-- was row g-3 -->
                     <!-- SIDEBAR (the actual sticky element) -->
-                    <aside class="col-12 col-md-4">
-                        <div class="position-sticky top-0">
-                            <div class="text-bg-dark rounded p-3 mb-3">
+                    <aside class=""> <!-- was col-12 col-md-4 -->
+                        <div class=""> <!-- was position-sticky top-0 -->
+                            <div class="">
                                 <strong>Sidebar (Sticky)</strong><br />
-                                <span class="small">Links, ads, cart summary, filters…</span>
-                            </div>
-                            <div class="bg-body-tertiary border rounded p-3">
-                                <p class="small mb-2"><strong>Quick Links</strong></p>
-                                <ul class="small mb-0 ps-3">
+                                <span class="">Links, ads, cart summary, filters…</span>
+                            </div> <!-- was text-bg-dark rounded p-3 mb-3 -->
+                            <div class="">
+                                <p class=""><strong>Quick Links</strong></p> <!-- was small mb-2 -->
+                                <ul class="">
                                     <li>Latest Posts</li>
                                     <li>Popular Tags</li>
                                     <li>Sale Items</li>
-                                </ul>
-                            </div>
+                                </ul> <!-- was small mb-0 ps-3 -->
+                            </div> <!-- was bg-body-tertiary border rounded p-3 -->
                         </div>
                     </aside>
 
                     <!-- MAIN CONTENT (tall to force scroll) -->
-                    <main class="col-12 col-md-8">
-                        <div class="border rounded p-3">
-                            <h3 class="fs-5 fw-bold text-primary">Main Content</h3>
+                    <main class=""> <!-- was col-12 col-md-8 -->
+                        <div class="">
+                            <h3 class="">Main Content</h3> <!-- was fs-5 fw-bold text-primary -->
                             <p>Scroll this container; the sidebar remains pinned at the top within the box.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget turpis justo. Morbi
                                 vitae dictum lectus.</p>
@@ -458,7 +486,7 @@
                                 convallis pulvinar.</p>
                             <p>Mauris non efficitur lacus. Curabitur luctus diam ut lectus scelerisque, non feugiat sem
                                 condimentum.</p>
-                        </div>
+                        </div> <!-- was border rounded p-3 -->
                     </main>
                 </div>
             </div>
@@ -466,132 +494,135 @@
     </section>
 
     <!-- ============== IMAGES: HELPERS, GALLERY, CAPTIONS, HERO ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Responsive Images — Visual Demos</h2>
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Responsive Images — Visual Demos</h2> <!-- was fw-semibold mb-4 text-center text-secondary -->
 
         <!-- Helpers -->
-        <h3 class="fs-5 fw-bold text-primary text-center mb-2">Demo 1: Helpers</h3>
-        <div class="row g-4">
-            <div class="col-12 col-md-4">
-                <img src="https://picsum.photos/seed/a/800/600"
-                    class="img-fluid rounded shadow border border-primary border-3" alt="Example 1" />
-                <p class="text-center small mt-2"><code>.img-fluid .rounded .border-primary</code></p>
+        <h3 class="">Demo 1: Helpers</h3> <!-- was fs-5 fw-bold text-primary text-center mb-2 -->
+        <div class=""> <!-- was row g-4 -->
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <img src="https://picsum.photos/seed/a/800/600" class="" alt="Example 1" />
+                <!-- was img-fluid rounded shadow border border-primary border-3 -->
+                <p class=""><code>.img-fluid .rounded .border-primary</code></p> <!-- was text-center small mt-2 -->
             </div>
-            <div class="col-12 col-md-4">
-                <img src="https://picsum.photos/seed/b/800/600"
-                    class="img-fluid rounded-circle border border-success border-3" alt="Example 2" />
-                <p class="text-center small mt-2"><code>.rounded-circle .border-success</code></p>
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <img src="https://picsum.photos/seed/b/800/600" class="" alt="Example 2" />
+                <!-- was img-fluid rounded-circle border border-success border-3 -->
+                <p class=""><code>.rounded-circle .border-success</code></p> <!-- was text-center small mt-2 -->
             </div>
-            <div class="col-12 col-md-4">
-                <div class="ratio ratio-16x9 border border-warning border-3 rounded overflow-hidden">
-                    <img src="https://picsum.photos/seed/c/1200/800" class="w-100 h-100 object-fit-cover"
-                        alt="Cover Example" />
+            <div class=""> <!-- was col-12 col-md-4 -->
+                <div class=""> <!-- was ratio ratio-16x9 border border-warning border-3 rounded overflow-hidden -->
+                    <img src="https://picsum.photos/seed/c/1200/800" class="" alt="Cover Example" />
+                    <!-- was w-100 h-100 object-fit-cover -->
                 </div>
-                <p class="text-center small mt-2"><code>.ratio-16x9 .object-fit-cover</code></p>
+                <p class=""><code>.ratio-16x9 .object-fit-cover</code></p> <!-- was text-center small mt-2 -->
             </div>
         </div>
 
         <!-- Auto gallery -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 2: Auto Gallery (<code>row-cols-*</code>)</h3>
-        <p class="text-center small text-muted mb-3">1 / 2 / 3 / 4 columns — no child <code>col-*</code> needed.</p>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-            <div class="col"><img src="https://picsum.photos/seed/g1/600/400" class="img-fluid rounded border"
-                    alt="Gallery 1" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g2/600/400" class="img-fluid rounded border"
-                    alt="Gallery 2" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g3/600/400" class="img-fluid rounded border"
-                    alt="Gallery 3" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g4/600/400" class="img-fluid rounded border"
-                    alt="Gallery 4" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g5/600/400" class="img-fluid rounded border"
-                    alt="Gallery 5" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g6/600/400" class="img-fluid rounded border"
-                    alt="Gallery 6" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g7/600/400" class="img-fluid rounded border"
-                    alt="Gallery 7" /></div>
-            <div class="col"><img src="https://picsum.photos/seed/g8/600/400" class="img-fluid rounded border"
-                    alt="Gallery 8" /></div>
+        <h3 class="">Demo 2: Auto Gallery (<code>row-cols-*</code>)</h3>
+        <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">1 / 2 / 3 / 4 columns — no child <code>col-*</code> needed.</p>
+        <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 -->
+            <div class=""><img src="https://picsum.photos/seed/g1/600/400" class="" alt="Gallery 1" /></div>
+            <!-- was img-fluid rounded border -->
+            <div class=""><img src="https://picsum.photos/seed/g2/600/400" class="" alt="Gallery 2" /></div>
+            <div class=""><img src="https://picsum.photos/seed/g3/600/400" class="" alt="Gallery 3" /></div>
+            <div class=""><img src="https://picsum.photos/seed/g4/600/400" class="" alt="Gallery 4" /></div>
+            <div class=""><img src="https://picsum.photos/seed/g5/600/400" class="" alt="Gallery 5" /></div>
+            <div class=""><img src="https://picsum.photos/seed/g6/600/400" class="" alt="Gallery 6" /></div>
+            <div class=""><img src="https://picsum.photos/seed/g7/600/400" class="" alt="Gallery 7" /></div>
+            <div class=""><img src="https://picsum.photos/seed/g8/600/400" class="" alt="Gallery 8" /></div>
         </div>
 
         <!-- Captions -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 3: Image Captions (Semantic)</h3>
-        <p class="text-center small text-muted mb-3">Use <code>&lt;figure&gt;</code>/<code>&lt;figcaption&gt;</code> +
-            utilities.</p>
-        <div class="row g-4">
-            <div class="col-12 col-md-6">
-                <figure class="m-0">
-                    <img src="https://picsum.photos/seed/cap1/900/600" alt="Forest path at golden hour"
-                        class="img-fluid rounded border" />
-                    <figcaption class="small text-muted mt-2">Figure 1. A descriptive caption for context.</figcaption>
+        <h3 class="">Demo 3: Image Captions (Semantic)</h3> <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class="">Use <code>&lt;figure&gt;</code>/<code>&lt;figcaption&gt;</code> +
+            utilities.</p> <!-- was text-center small text-muted mb-3 -->
+        <div class=""> <!-- was row g-4 -->
+            <div class=""> <!-- was col-12 col-md-6 -->
+                <figure class=""> <!-- was m-0 -->
+                    <img src="https://picsum.photos/seed/cap1/900/600" alt="Forest path at golden hour" class="" />
+                    <!-- was img-fluid rounded border -->
+                    <figcaption class="">Figure 1. A descriptive caption for context.</figcaption>
+                    <!-- was small text-muted mt-2 -->
                 </figure>
             </div>
-            <div class="col-12 col-md-6">
-                <figure class="m-0">
-                    <img src="https://picsum.photos/seed/cap2/900/600" alt="City skyline at dusk"
-                        class="img-fluid rounded border" />
-                    <figcaption class="small text-center text-secondary mt-2 pt-2 border-top">Figure 2. Centered caption
-                        with a rule.</figcaption>
+            <div class=""> <!-- was col-12 col-md-6 -->
+                <figure class=""> <!-- was m-0 -->
+                    <img src="https://picsum.photos/seed/cap2/900/600" alt="City skyline at dusk" class="" />
+                    <!-- was img-fluid rounded border -->
+                    <figcaption class="">Figure 2. Centered caption
+                        with a rule.</figcaption> <!-- was small text-center text-secondary mt-2 pt-2 border-top -->
                 </figure>
             </div>
         </div>
 
         <!-- Mini hero overlays -->
-        <h3 class="fs-5 fw-bold text-primary text-center mt-4 mb-2">Demo 4: Mini Hero (Overlay a Div on an Image)</h3>
-        <p class="text-center small text-muted mb-3"><code>.position-relative</code> wrapper +
+        <h3 class="">Demo 4: Mini Hero (Overlay a Div on an Image)</h3>
+        <!-- was fs-5 fw-bold text-primary text-center mt-4 mb-2 -->
+        <p class=""><code>.position-relative</code> wrapper +
             <code>.position-absolute</code> overlay; <code>.ratio</code> + <code>.object-fit-cover</code> for responsive
             crop.
-        </p>
+        </p> <!-- was text-center small text-muted mb-3 -->
 
         <!-- Bottom bar overlay -->
-        <div class="position-relative ratio ratio-21x9 rounded overflow-hidden border">
-            <img src="https://picsum.photos/seed/hero1/1600/900" alt="Abstract hero background"
-                class="w-100 h-100 object-fit-cover" />
-            <div class="position-absolute bottom-0 start-0 end-0 p-3 p-sm-4 bg-dark bg-opacity-50 text-white">
-                <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-2">
+        <div class=""> <!-- was position-relative ratio ratio-21x9 rounded overflow-hidden border -->
+            <img src="https://picsum.photos/seed/hero1/1600/900" alt="Abstract hero background" class="" />
+            <!-- was w-100 h-100 object-fit-cover -->
+            <div class="">
+                <!-- was position-absolute bottom-0 start-0 end-0 p-3 p-sm-4 bg-dark bg-opacity-50 text-white -->
+                <div class="">
+                    <!-- was d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-2 -->
                     <div>
-                        <h4 class="m-0 fw-bold">Utilities-Only Hero</h4>
-                        <p class="m-0 small opacity-75">Ratio + object-fit + position utilities — no components.</p>
+                        <h4 class="">Utilities-Only Hero</h4> <!-- was m-0 fw-bold -->
+                        <p class="">Ratio + object-fit + position utilities — no components.</p>
+                        <!-- was m-0 small opacity-75 -->
                     </div>
-                    <a href="#"
-                        class="text-white text-decoration-none border rounded px-3 py-2 small d-inline-block d-md-none d-lg-inline-block">Learn
+                    <a href="#" class="">Learn
                         more →</a>
+                    <!-- was text-white text-decoration-none border rounded px-3 py-2 small d-inline-block d-md-none d-lg-inline-block -->
                 </div>
             </div>
         </div>
 
         <!-- Centered overlay (flex-centered, always perfect) -->
-        <div class="position-relative ratio ratio-16x9 rounded overflow-hidden border mt-3">
-            <img src="https://picsum.photos/seed/hero2/1600/900" alt="Geometric shapes"
-                class="w-100 h-100 object-fit-cover" />
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
-                <div class="bg-white bg-opacity-75 text-dark rounded px-3 py-2 text-center">
-                    <span class="fw-semibold">Centered Overlay</span>
+        <div class=""> <!-- was position-relative ratio ratio-16x9 rounded overflow-hidden border mt-3 -->
+            <img src="https://picsum.photos/seed/hero2/1600/900" alt="Geometric shapes" class="" />
+            <!-- was w-100 h-100 object-fit-cover -->
+            <div class="">
+                <!-- was position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center -->
+                <div class="">
+                    <span class="">Centered Overlay</span>
+                    <!-- was bg-white bg-opacity-75 text-dark rounded px-3 py-2 text-center fw-semibold -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============== EMBEDS (YouTube/Vimeo) via .ratio ================= -->
-    <section class="container py-5">
-        <h2 class="fw-semibold mb-4 text-center text-secondary">Embeds (YouTube / Vimeo) — Responsive Ratio</h2>
-        <p class="text-center small text-muted mb-3">
+    <section class=""> <!-- was container py-5 -->
+        <h2 class="">Embeds (YouTube / Vimeo) — Responsive Ratio</h2>
+        <!-- was fw-semibold mb-4 text-center text-secondary -->
+        <p class="">
             Use <code>.ratio</code> to keep a consistent aspect ratio. Example below is a kid-safe, public-domain clip
             (replace with your choice).
-        </p>
+        </p> <!-- was text-center small text-muted mb-3 -->
 
         <!-- Replace VIDEO_ID_HERE with a safe, short clip (e.g., NASA) -->
-        <div class="ratio ratio-16x9 border rounded overflow-hidden">
+        <div class=""> <!-- was ratio ratio-16x9 border rounded overflow-hidden -->
             <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="Public-domain short"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
-        <p class="small text-muted mt-2 mb-0">For Vimeo, use the player URL inside the same <code>.ratio</code> wrapper.
-        </p>
+        <p class="">For Vimeo, use the player URL inside the same <code>.ratio</code> wrapper.
+        </p> <!-- was small text-muted mt-2 mb-0 -->
     </section>
 
     <!-- FOOTER -->
-    <footer class="container text-center py-4 mt-5 border-top">
-        <small class="text-muted">© 2025 Bootstrap Utilities Demo — Teacher</small>
+    <footer class=""> <!-- was container text-center py-4 mt-5 border-top -->
+        <small class="">© 2025 Bootstrap Utilities Demo — Teacher</small> <!-- was text-muted -->
     </footer>
 </body>
 
